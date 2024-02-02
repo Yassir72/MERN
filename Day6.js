@@ -2,6 +2,7 @@ var fs = require('fs');
 const { resolve } = require('path');
 const fonction= require('./files');
 
+/*CodeWars
 
 function maskify(cc) { let arr="";
     if(cc.length>4){
@@ -14,7 +15,7 @@ function maskify(cc) { let arr="";
     return arr;
   }
 
-
+*/
 
 
 
@@ -39,6 +40,8 @@ function read(txt){ return readFileAsync(txt).then((msg)=>{
 
  let arr = ["hello.txt","texte.txt"];
  fonction.processFiles(arr);
+
+
 
 
 
