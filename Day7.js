@@ -1,3 +1,5 @@
+// CodeWars
+
 // function digitalRoot(n) { let m = n.toString();
 //     while(m.length>1){ let temp=0 ; 
 //         for(let i=0; i<m.length;i++){
