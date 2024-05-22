@@ -4,8 +4,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 
-passport.use(new LocalStrategy(function (username,password,done){
-        UserModel.findOne({username : username})
+passport.use(new LocalStrategy({ usernameField: 'email' },function (email,password,done){ console.log(email);
+        UserModel.findOne({email : email})
                 .then((user)=>{  console.log(user);
                     if(!user) { console.log("doesn\'t exist");
                     return done(null,false,{message:"This user doesn\'t exist"})}
@@ -17,19 +17,19 @@ passport.use(new LocalStrategy(function (username,password,done){
     }))
 
 
-passport.serializeUser((user, done) => {
+passport.serializeUser((user, done) => { console.log('hh');
     done(null, user.id);
   });
   
-passport.deserializeUser((id, done) => {
+passport.deserializeUser((id, done) => { console.log('222');
     UserModel.findById(id)
         .then((user)=>done(null,user))
         .catch((err)=>done(err))
   });
 
-function isAuthenticated (req,res,next){
+function isAuthenticated (req,res,next){ console.log(req.isAuthenticated());
         if(req.isAuthenticated()) return next();
-        res.send('Please login to access the requested resource!');
+        else res.send('Please login to access the requested resource!');
 }
 
 module.exports = isAuthenticated;

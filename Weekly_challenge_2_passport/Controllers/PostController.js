@@ -13,12 +13,12 @@ async function seePosts(req,res){
 }
 
 async function seePost(req,res){ 
-            
+            console.log(req.body.title);
     res.send(await PostModel.findOne( {title : req.body.title}));
 }
 
 
-async function deletePost(req,res){
+async function deletePost(req,res){ console.log(req.body);
     await PostModel.deleteOne({title : req.body.title})
                     .then((user)=>console.log(user));
     res.send("done")
